@@ -1,0 +1,24 @@
+<div *ngIf="!loading">
+  <div class="container">
+    <div class="">
+      <div class="col-xs-3">
+        <ul *ngIf="stores.length">
+          <li *ngFor="let store of stores">
+            <i>{{store.nomResto}}</i> <br>
+            <i>Address</i> :
+            <p> {{store.adresseResto}}</p>
+            <button class="btn btn-outline-danger m-1 col-xs-8" (click)="deleteStore(store.idResto)">Delete</button>
+            <button class="btn btn-outline-info m-1 col-xs-8" [routerLink]="['/restaurant/', store.idResto]">Edit</button>
+            <button class="btn btn-outline-success m-1 col-xs-8" [routerLink]="['/restaurant/platPerso/', store.idResto]">List</button>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <span *ngIf="error" >{{error}}</span>
+</div>
+<div *ngIf="loading">
+chargement !
+</div>
+

@@ -1,0 +1,14 @@
+<form action="" [formGroup]="categoryForm1" (ngSubmit)="updateCategory()">
+  <div class="form-group container">
+    <H4> Update Article Category</H4>
+    <fieldset>
+      <input type="text"
+             [ngClass]="{'is-invalid': categoryForm1.invalid && categoryForm1.get('title').touched && categoryForm1.get('title').errors != null}"
+             class="m-3 form-control"
+             [(ngModel)]='category.title'
+             placeholder="Title"
+             formControlName="title">
+    </fieldset>
+    <button class="btn btn-success" [disabled]="categoryForm1.invalid">Update Category</button>
+  </div>
+</form>

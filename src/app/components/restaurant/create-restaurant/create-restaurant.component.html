@@ -1,0 +1,21 @@
+<div w-50 text-center>
+<h2>{{editAdd}}  Restaurant</h2>
+</div>
+<form action="" [formGroup]="restaurantFrom" (ngSubmit)="addStore()" *ngIf="showForm">
+  <div class="form-group container">
+    <fieldset>
+      <input type="text"
+
+             class="m-3 form-control"
+             placeholder="Name"
+             formControlName="name">
+      <input type="text"
+
+      class="m-3 form-control"
+      placeholder="Address"
+      formControlName="address">
+    </fieldset>
+    <button  type="submit" [disabled]="!restaurantFrom.valid"
+             class="btn btn-success" >{{editAdd}} Restaurant</button>
+  </div>
+</form>

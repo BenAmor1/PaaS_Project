@@ -1,0 +1,44 @@
+<!--
+<form action="" [formGroup]="recipeForm" (ngSubmit)="updateRecipe()">
+    <div class="form-group container">
+      <H4> Update Recipe</H4>
+      <fieldset>
+        <input type="text"
+        [ngClass]="{'is-invalid': recipeForm.invalid && recipeForm.get('name').touched && recipeForm.get('name').errors != null}"
+        class="m-3 form-control"
+        [(ngModel)]="recipeForm.name"
+        placeholder="Name"
+        formControlName="name">
+        <input type="text"
+        [ngClass]="{'is-invalid': recipeForm.invalid && recipeForm.get('time').touched && recipeForm.get('time').errors != null}"
+        class="m-3 form-control"
+        [(ngModel)]="recipeForm.time"
+        placeholder="Time"
+        formControlName="time">
+      <input type="text"
+        [ngClass]="{'is-invalid': recipeForm.invalid && recipeForm.get('nbrPersons').touched && recipeForm.get('nbrPersons').errors != null}"
+        class="m-3 form-control"
+        [(ngModel)]="recipeForm.nbrPersons"
+        placeholder="N° Persons"
+        formControlName="nbrPersons">
+      <input type="text"
+        [ngClass]="{'is-invalid': recipeForm.invalid && recipeForm.get('description').touched && recipeForm.get('description').errors != null}"
+        class="m-3 form-control"
+        [(ngModel)]="recipeForm.description"
+        placeholder="Description"
+        formControlName="description">
+        <i>Ingredients:</i> :
+              <div>
+                  <ul *ngFor="let recin of recipe.ingredients">
+                    <li>{{recin.ingredient.name}} : {{recin.quantity}} pices <br>
+                    <button class="btn btn-outline-danger m-1 col-xs-8" (click)="deleteRecIng(recin.id)">Delete</button>
+                      <button class="btn btn-outline-info m-1 col-xs-8" [routerLink]="['/recing/update/', recin.id]">Edit</button>
+                    </li>
+                  </ul>
+              </div>
+
+        </fieldset>
+        <button class="btn btn-success" [routerLink]="['/recing/', recipe.id]">Add Ingredients</button>
+      <button class="btn btn-success" [disabled]="recipeForm.invalid">Update Recipe</button>
+    </div>
+  </form> -->

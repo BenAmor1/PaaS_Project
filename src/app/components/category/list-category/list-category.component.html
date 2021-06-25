@@ -1,0 +1,23 @@
+<div *ngIf="!loading">
+  <H4> List Of Articles Category</H4>
+  <div class="container">
+    <div class="">
+      <div class="col-xs-3">
+        <ul *ngIf="categorys.length">
+          <li *ngFor="let a of categorys">
+            <i>#Id</i> :
+            <i>{{a.id}}</i> <br>
+            <i>Title</i> :
+            <i> {{a.title}} </i><br>
+            <button class="btn btn-outline-danger m-1 col-xs-8" (click)="deleteCategory(a.id)">Delete</button>
+            <button class="btn btn-outline-info m-1 col-xs-8" [routerLink]="['/category/', a.id]">Edit</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <span *ngIf="error" >{{error}}</span>
+</div>
+<div *ngIf="loading">
+  chargement !
+</div>

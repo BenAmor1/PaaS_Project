@@ -1,0 +1,19 @@
+<form action="" [formGroup]="storeForm" (ngSubmit)="updateStore()">
+  <div class="form-group container">
+    <fieldset>
+      <input type="text"
+      [ngClass]="{'is-invalid': storeForm.invalid && storeForm.get('name').touched && storeForm.get('name').errors != null}"
+      class="m-3 form-control"
+      placeholder="Name"
+      [(ngModel)]="store.name"
+      formControlName="name">
+      <input type="text"
+      [ngClass]="{'is-invalid': storeForm.invalid && storeForm.get('address').touched && storeForm.get('address').errors != null}"
+      class="m-3 form-control"
+      placeholder="Address"
+      [(ngModel)]="store.address"
+      formControlName="address">
+    </fieldset>
+    <button class="btn btn-success" [disabled]="storeForm.invalid">Add Store</button>
+  </div>
+</form>

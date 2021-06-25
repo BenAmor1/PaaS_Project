@@ -1,0 +1,32 @@
+<form action="" [formGroup]="ingredientForm" (ngSubmit)="addIngredient()">
+  <div class="form-group container">
+    <fieldset>
+      <input type="text"
+      [ngClass]="{'is-invalid': ingredientForm.invalid && ingredientForm.get('name').touched && ingredientForm.get('name').errors != null}"
+      class="m-3 form-control"
+      placeholder="Name"
+      formControlName="name">
+      <input type="text"
+      [ngClass]="{'is-invalid': ingredientForm.invalid && ingredientForm.get('reference').touched && ingredientForm.get('reference').errors != null}"
+      class="m-3 form-control"
+      placeholder="Reference"
+      formControlName="reference">
+      <input type="number"
+      [ngClass]="{'is-invalid': ingredientForm.invalid && ingredientForm.get('quantity').touched && ingredientForm.get('quantity').errors != null}"
+      class="m-3 form-control"
+      placeholder="Quantity"
+      formControlName="quantity">
+      <input type="number"
+      [ngClass]="{'is-invalid': ingredientForm.invalid && ingredientForm.get('price').touched && ingredientForm.get('price').errors != null}"
+      class="m-3 form-control"
+      placeholder="Price"
+      formControlName="price">
+      <h4>choisir un plat </h4>
+      <select matNativeControl class="m-3 form-control"
+      formControlName="recipe" >
+          <option class="form-control" *ngFor="let ing of recipes; let i = index" [ngValue]="ing.idPlatPerso">{{ing.nomPlatPerso}}</option>
+      </select>
+    </fieldset>
+    <button class="btn btn-success" [disabled]="ingredientForm.invalid">ajouter plat</button>
+  </div>
+</form>

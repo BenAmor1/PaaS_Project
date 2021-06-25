@@ -1,0 +1,24 @@
+<form action="" [formGroup]="articleForm" (ngSubmit)="addArticle()">
+  <div class="form-group container">
+    <H4> Create Dish</H4>
+    <fieldset>
+      <input type="text"
+             [ngClass]="{'is-invalid': articleForm.invalid && articleForm.get('nomPlat').touched && articleForm.get('nomPlat').errors != null}"
+             class="m-3 form-control"
+             placeholder="nomPlat"
+             formControlName="nomPlat">
+      <textarea  type="text"
+             [ngClass]="{'is-invalid': articleForm.invalid && articleForm.get('description').touched && articleForm.get('description').errors != null}"
+             class="m-3 form-control"
+             placeholder="description"
+             formControlName="description">
+      </textarea>
+
+      <select matNativeControl  required class="m-3 form-control"
+             formControlName="categorie" >
+        <option *ngFor="let categorie of categories; let i = index" [ngValue]="categorie.idCat">{{categorie.nomCat}}</option>
+      </select>
+    </fieldset>
+    <button class="btn btn-success" [disabled]="articleForm.invalid">Add Dish</button>
+  </div>
+</form>

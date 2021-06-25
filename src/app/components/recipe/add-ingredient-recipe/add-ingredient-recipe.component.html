@@ -1,0 +1,20 @@
+<!-- <form action="" [formGroup]="recipeIngreForm" (ngSubmit)="addIngredient()">
+    <div class="form-group container">
+      <fieldset>
+        <h4>Select Ingredient</h4>
+        <mat-form-field appearance="fill">
+            <mat-label>Ingredients</mat-label>
+            <select matNativeControl required class="m-3 form-control"
+            formControlName="Ingredient" >
+                <option *ngFor="let ing of Ingredients; let i = index" [value]="ing.id">{{ing.name}}</option>
+            </select>
+        </mat-form-field>
+      <input type="number" min="1"
+        [ngClass]="{'is-invalid': recipeIngreForm.invalid && recipeIngreForm.get('quantity').touched && recipeIngreForm.get('quantity').errors != null}"
+        class="m-3 form-control"
+        placeholder="Quantity"
+        formControlName="quantity">
+        </fieldset>
+      <button class="btn btn-success">Add Ingredient</button>
+    </div>
+  </form> -->

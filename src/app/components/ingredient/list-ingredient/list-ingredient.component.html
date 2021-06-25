@@ -1,0 +1,29 @@
+<div *ngIf="!loading">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <ul class="row" *ngIf="ingredients.length">
+          <li class="list-group-item card" *ngFor="let ingredient of ingredients">
+            <div class="card cad" style="width: 22rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{ingredient.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ingredient.reference}}</h6>
+                <p class="card-text">price :  {{ingredient.price}} $</p>
+                <p *ngIf="ingredient.quantity" class="card-text">quantity :  {{ingredient.quantity}} Kg</p>
+                <p class="card-text">Plat personalisé affecté : {{ingredient.platPersonalise.nomPlatPerso}}</p>
+
+                <!-- <p *ngIf="ingredient.store" class="card-text">Plat personalisé affecté :  {{ingredient.platPersonalise.nomPlatPerso}} </p> -->
+              </div>
+              <button class="btn btn-outline-danger m-1 col-xs-8" (click)="deleteIngredient(ingredient.id)">Supprimer</button>
+              <button class="btn btn-outline-info m-1 col-xs-8" [routerLink]="['/ingredients/', ingredient.id]">Modifier</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <span *ngIf="error" >{{error}}</span>
+</div>
+<div *ngIf="loading">
+chargement !
+</div>
