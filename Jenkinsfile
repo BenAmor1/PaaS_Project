@@ -40,5 +40,13 @@ pipeline {
 	    echo ' all images are deleted'
 	    }
 	}
+	stage ('execute container on remote node') {
+	    steps {
+	    sh 'ssh benamor@52.142.49.173'
+	    sh 'sudo -i'
+	    sh 'docker run -d -it -p 80:80/tcp --name angular-app 52.142.49.173:5000/restaurant:${GIT_COMMIT}'
+	    echo 'image is runing'
+            }
+	}
     }
 }
