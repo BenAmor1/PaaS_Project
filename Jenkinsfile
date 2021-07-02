@@ -48,7 +48,7 @@ pipeline {
         }
         stage ('remote SSH Agent'){
 	    steps {
-            sshCommand remote: remote, command: 'docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
+            sshCommand remote: remote, command: 'sudo docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
             }        
         }
     }
