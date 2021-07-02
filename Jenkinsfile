@@ -15,14 +15,14 @@ pipeline {
         stage ('Image Build') {
             steps {
                 echo 'Building Image ...'
-                sh 'docker build -t images/restaurant:${commit_id} .'
+                sh 'docker build -t images/restaurant .'
                 echo 'Build Complete'
             }
         }
 	stage ('Tag Images') {
 	    steps {
 		echo 'Tagging Image ...'
-		sh 'docker tag images/restaurant:${commit_id} 52.142.49.173:5000/restaurant:${commit_id}'
+		sh 'docker tag images/restaurant 52.142.49.173:5000/restaurant:${commit_id}'
 		echo 'tagging complete'
 	    }
 	}	
