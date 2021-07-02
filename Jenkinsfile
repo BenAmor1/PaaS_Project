@@ -9,7 +9,7 @@ pipeline {
                 sh "git rev-parse HEAD > .git/commit-id"
                 script {
                     commit_id = readFile('.git/commit-id').trim()
-		    echo ${commit_id}
+		    echo "${commit_id}"
                 }
             }
         }
