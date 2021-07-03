@@ -71,7 +71,7 @@ pipeline {
 			    }
 			}
             steps {
-                sh ' ssh benamor@52.142.49.173'
+                echo ('runing docker on dev enviroment')
                 sh 'docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
 			}
 		}
