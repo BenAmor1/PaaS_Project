@@ -78,5 +78,21 @@ pipeline {
                 sh 'docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
 			}
 		}
+        stage ('test master branch'){
+            when {
+                branch 'master'
+            }
+             agent {
+                node {
+                   label 'JenkinsSlave'
+                }
+            }
+            steps {
+                echo ('runing docker on dev enviroment')
+                sh ' git branch -a'
+                        }
+                }
+
+
 }
 }
