@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage ('preparation') {
 		    agent {
-			    label 'master'
+			    node {
+			        label 'master'
+			    }
 			}
             steps {
                 checkout scm
@@ -16,6 +18,11 @@ pipeline {
             }
         }
         stage ('Image Build') {
+		 agent {
+			    node {
+			        label 'master'
+			    }
+			}
             steps {
                 echo 'Building Image ...'
                 sh 'docker build -t images/restaurant .'
@@ -23,6 +30,11 @@ pipeline {
             }
         }
         stage ('Tag Images') {
+		 agent {
+			    node {
+			        label 'master'
+			    }
+			}
             steps {
                 echo 'Tagging Image ...'
                 sh 'docker tag images/restaurant 52.142.49.173:5000/restaurant:${GIT_COMMIT}'
@@ -30,12 +42,22 @@ pipeline {
             }
         }
         stage ('push image to docker Repo') {
+		 agent {
+			    node {
+			        label 'master'
+			    }
+			}
             steps {
                 echo 'push image to local Repo'
                 sh 'docker push 52.142.49.173:5000/restaurant:${GIT_COMMIT}'
             }
         }
         stage ('delete all local image'){
+		 agent {
+			    node {
+			        label 'master'
+			    }
+			}
             steps {
             echo 'delete all local image'
             sh 'docker rmi $(docker images -q) -f'
@@ -43,8 +65,10 @@ pipeline {
             }
         }
         stage ('run docker container on remote agent'){
-		    agent {
-			    label 'JenkinsSlave'
+		     agent {
+			    node {
+			        label 'JenkinsSlave'
+			    }
 			}
             steps {
                 sh ' ssh benamor@52.142.49.173'
