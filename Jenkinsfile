@@ -65,9 +65,6 @@ pipeline {
             }
         }
         stage ('run docker container on remote agent'){
-	    when {
-		branch 'origin/developper'
-	    }
 	     agent {
 	        node {
 	           label 'JenkinsSlave'
