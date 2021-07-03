@@ -1,9 +1,12 @@
 def commit_id
 pipeline {
-    agent any
+    agent none
     stages {
         stage ('preparation') {
-	    steps {
+		    agent {
+			    label 'mater'
+			}
+            steps {
                 checkout scm
                 sh "git rev-parse HEAD > .git/commit-id"
                 script {
@@ -39,11 +42,14 @@ pipeline {
             echo ' all images are deleted'
             }
         }
-	stage ('run docker container on remote agent'){
+        stage ('run docker container on remote agent'){
+		    agent {
+			    label 'JenkinsSlave'
+			}
             steps {
-		sh ' ssh benamor@52.142.49.173'
-	        sh 'docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
-            }
-       }
+                sh ' ssh benamor@52.142.49.173'
+                sh 'docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
+			}
+		}
 }
 }
