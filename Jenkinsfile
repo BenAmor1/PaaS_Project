@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('preparation') {
 		    agent {
-			    label 'mater'
+			    label 'master'
 			}
             steps {
                 checkout scm
