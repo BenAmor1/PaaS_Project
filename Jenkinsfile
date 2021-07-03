@@ -1,12 +1,9 @@
 def commit_id
 pipeline {
     agent none
-
     stages {
         stage ('preparation') {
-	    agent {
-	        label 'master'
-	    }
+	    agent any
             steps {
                 checkout scm
                 sh "git rev-parse HEAD > .git/commit-id"
@@ -17,6 +14,9 @@ pipeline {
             }
         }
         stage ('Image Build') {
+            agent {
+                label 'master'
+            }
             steps {
                 echo 'Building Image ...'
                 sh 'docker build -t images/restaurant .'
