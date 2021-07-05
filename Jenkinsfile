@@ -27,7 +27,7 @@ pipeline {
      }
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'origin/developper'
+			           env.GIT_BRANCH == 'developper'
 			   }
 			}
             steps {
@@ -44,7 +44,7 @@ pipeline {
 			}
 		when {
 		   expression {
-		           env.GIT_BRANCH == 'origin/developper'
+		           env.GIT_BRANCH == 'developper'
 		   }
 		}
             steps {
@@ -61,7 +61,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'origin/developper'
+			           env.GIT_BRANCH == 'developper'
 			   }
 			}
             steps {
@@ -89,7 +89,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'origin/developper'
+			           env.GIT_BRANCH == 'developper'
 			   }
 			}
             steps {
