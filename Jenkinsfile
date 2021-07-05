@@ -35,11 +35,11 @@ pipeline {
 			        label 'master'
 			    }
 			}
-		when {
-		   expression {
-		           env.GIT_BRANCH == 'developper'
-		   }
-		}
+			when {
+			   expression {
+			           env.GIT_BRANCH == 'developper'
+			   }
+			}
             steps {
                 echo 'Tagging Image ...'
                 sh 'docker tag images/restaurant 52.142.49.173:5000/restaurant:${GIT_COMMIT}'
@@ -54,7 +54,7 @@ pipeline {
 			}
 			when {
 			   expression {
-           env.GIT_BRANCH == 'developper'
+			           env.GIT_BRANCH == 'developper'
 			   }
 			}
             steps {
@@ -76,17 +76,16 @@ pipeline {
         }
         stage ('run docker container on remote agent'){
 		     agent {
-			    node {
-			        label 'JenkinsSlave'
+			       node {
+			          label 'JenkinsSlave'
+			       }
 			    }
-			}
 			when {
 			   expression {
 			           env.GIT_BRANCH == 'developper'
 			   }
 			}
             steps {
-                sh ' ssh benamor@52.142.49.173'
                 sh 'docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
 			}
 		}
