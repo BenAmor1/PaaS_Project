@@ -16,6 +16,7 @@ pipeline {
                     commit_id = readFile('.git/commit-id').trim()
                     echo "${commit_id}"
                     echo "${env.GIT_BRANCH}"
+                    echo env.GIT_BRANCH
                 }
             }
         }
@@ -24,6 +25,11 @@ pipeline {
 			    node {
 			        label 'master'
 			    }
+     }
+			when {
+			   expression {
+			           env.GIT_BRANCH == 'developper'
+			   }
 			}
             steps {
                 echo 'Building Image ...'
@@ -39,7 +45,7 @@ pipeline {
 			}
 		when {
 		   expression {
-		           env.GIT_BRANCH == 'remotes/origin/developper'
+		           env.GIT_BRANCH == 'developper'
 		   }
 		}
             steps {
@@ -56,7 +62,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'remotes/origin/developper'
+			           env.GIT_BRANCH == 'developper'
 			   }
 			}
             steps {
@@ -84,12 +90,11 @@ pipeline {
 			}
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'remotes/origin/developper'
+			           env.GIT_BRANCH == 'developper'
 			   }
 			}
             steps {
-                sh ' ssh benamor@52.142.49.173'
-                sh 'docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
+               sh 'docker run -d -it -p 80:80/tcp --name angular-app  52.142.49.173:5000/restaurant:${GIT_COMMIT}'
 			}
 		}
 }
