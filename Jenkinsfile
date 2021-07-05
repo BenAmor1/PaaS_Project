@@ -24,11 +24,11 @@ pipeline {
 			    node {
 			        label 'master'
 			    }
+     }
 			when {
 			   expression {
 			           env.GIT_BRANCH == 'origin/developper'
 			   }
-			}
 			}
             steps {
                 echo 'Building Image ...'
