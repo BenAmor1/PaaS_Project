@@ -15,6 +15,7 @@ pipeline {
                     commit_id = readFile('.git/commit-id').trim()
                     echo "${commit_id}"
                     echo "${env.GIT_BRANCH}"
+                    echo env.GIT_BRANCH
                 }
             }
         }
