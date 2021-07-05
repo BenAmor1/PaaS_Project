@@ -36,8 +36,10 @@ pipeline {
 			    }
 			}
 		when {
-			   BRANCH_NAME = 'developper'
-			}
+		   expression {
+		           BRANCH_NAME = 'developper'
+		   }
+		}
             steps {
                 echo 'Tagging Image ...'
                 sh 'docker tag images/restaurant 52.142.49.173:5000/restaurant:${GIT_COMMIT}'
@@ -50,8 +52,10 @@ pipeline {
 			        label 'master'
 			    }
 			}
-		when {
-			   BRANCH_NAME = 'developper'
+			when {
+			   expression {
+			           BRANCH_NAME = 'developper'
+			   }
 			}
             steps {
                 echo 'push image to local Repo'
@@ -77,7 +81,9 @@ pipeline {
 			    }
 			}
 			when {
-			   BRANCH_NAME = 'developper'
+			   expression {
+			           BRANCH_NAME = 'developper'
+			   }
 			}
             steps {
                 sh ' ssh benamor@52.142.49.173'
