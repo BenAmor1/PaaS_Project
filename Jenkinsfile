@@ -36,7 +36,7 @@ pipeline {
 			    }
 			}
 		when {
-			   env.${GIT_BRANCH} = 'developper'
+			   ${GIT_BRANCH} = 'developper'
 			}
             steps {
                 echo 'Tagging Image ...'
@@ -51,7 +51,7 @@ pipeline {
 			    }
 			}
 		when {
-			   env.${GIT_BRANCH} = 'developper'
+			   ${GIT_BRANCH} = 'developper'
 			}
             steps {
                 echo 'push image to local Repo'
@@ -77,7 +77,7 @@ pipeline {
 			    }
 			}
 			when {
-			   env.${GIT_BRANCH} = 'developper'
+			   {GIT_BRANCH} = 'developper'
 			}
             steps {
                 sh ' ssh benamor@52.142.49.173'
