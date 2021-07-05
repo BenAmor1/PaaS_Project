@@ -14,6 +14,7 @@ pipeline {
                 script {
                     commit_id = readFile('.git/commit-id').trim()
                     echo "${commit_id}"
+                    echo "${env.GIT_BRANCH}"
                 }
             }
         }
@@ -37,7 +38,7 @@ pipeline {
 			}
 		when {
 		   expression {
-		           env.GIT_BRANCH == 'origin/developper'
+		           env.GIT_BRANCH == 'remotes/origin/developper'
 		   }
 		}
             steps {
@@ -54,7 +55,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'origin/developper'
+			           env.GIT_BRANCH == 'remotes/origin/developper'
 			   }
 			}
             steps {
@@ -82,7 +83,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'origin/developper'
+			           env.GIT_BRANCH == 'remotes/origin/developper'
 			   }
 			}
             steps {
