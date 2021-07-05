@@ -37,7 +37,7 @@ pipeline {
 			}
 		when {
 		   expression {
-		           BRANCH_NAME = 'developper'
+		           ${GIT_BRANCH} = 'developper'
 		   }
 		}
             steps {
@@ -54,7 +54,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           BRANCH_NAME = 'developper'
+			           ${GIT_BRANCH} = 'developper'
 			   }
 			}
             steps {
@@ -82,7 +82,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           BRANCH_NAME = 'developper'
+			           ${GIT_BRANCH} = 'developper'
 			   }
 			}
             steps {
