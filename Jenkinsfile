@@ -24,6 +24,11 @@ pipeline {
 			    node {
 			        label 'master'
 			    }
+			when {
+			   expression {
+			           env.GIT_BRANCH == 'origin/developper'
+			   }
+			}
 			}
             steps {
                 echo 'Building Image ...'
@@ -39,7 +44,7 @@ pipeline {
 			}
 		when {
 		   expression {
-		           env.GIT_BRANCH == 'remotes/origin/developper'
+		           env.GIT_BRANCH == 'origin/developper'
 		   }
 		}
             steps {
@@ -56,7 +61,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'remotes/origin/developper'
+			           env.GIT_BRANCH == 'origin/developper'
 			   }
 			}
             steps {
@@ -84,7 +89,7 @@ pipeline {
 			}
 			when {
 			   expression {
-			           env.GIT_BRANCH == 'remotes/origin/developper'
+			           env.GIT_BRANCH == 'origin/developper'
 			   }
 			}
             steps {
