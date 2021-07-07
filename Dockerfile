@@ -18,3 +18,4 @@ FROM nginx:alpine
 COPY --from=node /app/dist/argon-design-system-angular /usr/share/nginx/html
 
 
+##test copying workspaces
