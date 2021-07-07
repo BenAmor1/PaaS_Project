@@ -82,8 +82,7 @@ pipeline {
             }
             steps {
                 echo ('delete and kill last Images')
-                sh 'docker kill angular-app'
-                sh 'docker rm angular-app '
+                sh 'docker rm -f angular-app '
             }
         }
         stage ('run docker container on remote agent'){
