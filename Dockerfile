@@ -1,4 +1,5 @@
 # stage 1
+# create container form NodeJS
 From node:latest as node
 # create working directory in the pod that contains node
 RUN mkdir -p /app
