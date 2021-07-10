@@ -30,7 +30,7 @@ pipeline {
 			    echo 'connection to ACR'
 				sh ' sudo -S az acr login --name paasrepo'
                 echo 'push image to ACR'
-                sh 'docker push paasrepo.azurecr.io/restaurant:${GIT_COMMIT}'
+                sh 'docker push paasrepo.azurecr.io/paasrepo:${GIT_COMMIT}'
 				echo 'images pushed'
             }
         }
