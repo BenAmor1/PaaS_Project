@@ -21,7 +21,7 @@ pipeline {
     }
     stage ('deploy image to AKS'){
         steps{
-            sh 'kubectl apply -f deployment.yaml -S'
+            sh 'sudo -S kubectl apply -f deployment.yaml -S'
         }
     }
 	}
