@@ -21,7 +21,7 @@ pipeline {
 		stage ('Tag Images') {
             steps {
                 echo 'Tagging Image ...'
-                sh 'docker tag images/restaurant paasrepo.azurecr.io/restaurant:${GIT_COMMIT}'
+                sh 'docker tag images/restaurant paasrepo.azurecr.io/paasrepo:${GIT_COMMIT}'
                 echo 'tagging complete'
             }
         }
