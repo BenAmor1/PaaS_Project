@@ -18,6 +18,10 @@ pipeline {
                 echo 'Build Complete'
             }
         }
+      stage('test"){
+            steps{
+              sh 'kubectl get node'}
+            }
     stage ('download and connect to AKS Cluster') {
         steps {
             sh 'az login -u mohamed.benamor.1@esprit.tn -p Beff@04834989'
