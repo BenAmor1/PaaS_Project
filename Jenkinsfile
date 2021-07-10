@@ -1,24 +1,4 @@
-openssl req \
-  -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
-  -addext "subjectAltName = IP: 20.102.59.82" \
-  -x509 -days 365 -out certs/domain.crt
-  
-  
-  
-  
-  docker run -d \
-  -p 5000:5000 \
-  --restart=always \
-  --name registry \
-  -v "$(pwd)"/certs:/certs \
-  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
-  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
-  registry:2
-  
-  
-  
-  
-  pipeline {
+pipeline {
     agent any
     stages {
         stage ('preparation') {
