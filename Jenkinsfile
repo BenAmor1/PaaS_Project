@@ -4,7 +4,7 @@ pipeline {
         stage ('preparation') {
             steps {
                 checkout scm
-                sh "git rev-parse HEAD > .git/commit-id"
+                    sh "git rev-parse HEAD > .git/commit-id"
                 script {
                     commit_id = readFile('.git/commit-id').trim()
                     echo "${commit_id}"
@@ -27,23 +27,23 @@ pipeline {
         }
 		stage ('push image to ACR') {
             steps {
-			    echo 'connection to ACR'
-				sh ' sudo -S az acr login --name paasrepo'
+			          echo 'connection to ACR'
+				        sh ' sudo -S az acr login --name paasrepo'
                 echo 'push image to ACR'
-                sh 'docker push paasrepo.azurecr.io/paasrepo:${GIT_COMMIT}'
-				echo 'images pushed'
+                sh 'sudo -S docker push paasrepo.azurecr.io/paasrepo:${GIT_COMMIT}'
+				        echo 'images pushed'
             }
         }
 		stage ('delete all local image'){
             steps {
-            echo 'delete all local image'
-            sh 'docker rmi $(docker images -q) -f'
-            echo ' all images are deleted'
+                echo 'delete all local image'
+                sh 'docker rmi $(docker images -q) -f'
+                echo ' all images are deleted'
             }
         }
         stage ('download and connect to AKS Cluster') {
             steps {
-				echo 'connection to AKS'
+			        	echo 'connection to AKS'
                 sh 'sudo -S az login -u mohamed.benamor.1@esprit.tn -p Beff@04834989'
                 sh ' sudo -S az aks install-cli'
                 sh 'sudo -S az aks get-credentials --resource-group prod-rg --name terraform-aks'
