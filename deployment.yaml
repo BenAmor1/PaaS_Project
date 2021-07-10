@@ -15,7 +15,7 @@ spec:
     spec: 
       containers: 
         - 
-          image: "paasrepo.azurecr.io/paasrepo:${BUILD_NUMBER}"
+          image: "paasrepo.azurecr.io/paasrepo:release1.0"
           name: angular
           ports: 
             - 
