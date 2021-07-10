@@ -21,7 +21,7 @@ pipeline {
 		stage ('Tag Images') {
             steps {
                 echo 'Tagging Image ...'
-                sh 'docker tag images/restaurant paasrepo.azurecr.io/paasrepo:${GIT_COMMIT}'
+                sh 'docker tag images/restaurant paasrepo.azurecr.io/paasrepo:${BUILD_NUMBER}'
                 echo 'tagging complete'
             }
         }
@@ -30,7 +30,7 @@ pipeline {
 			          echo 'connection to ACR'
 				        sh ' sudo -S az acr login --name paasrepo'
                 echo 'push image to ACR'
-                sh 'sudo -S docker push paasrepo.azurecr.io/paasrepo:${GIT_COMMIT}'
+                sh 'sudo -S docker push paasrepo.azurecr.io/paasrepo:${BUILD_NUMBER}'
 				        echo 'images pushed'
             }
         }
