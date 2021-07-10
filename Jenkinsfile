@@ -22,6 +22,7 @@ pipeline {
         steps {
             sh 'az login -u mohamed.benamor.1@esprit.tn -p Beff@04834989'
             echo 'downloanding aks CLi '
+            sh 'az aks install-cli'
             echo ' connecting to AKS cluster'
             sh ' az aks get-credentials --resource-group prod-rg --name terraform-aks'
             echo 'connected'
