@@ -15,7 +15,7 @@ spec:
     spec: 
       containers: 
         - 
-          image: "paasrepo.azurecr.io/restaurant:${GIT_COMMIT}"
+          image: "paasrepo.azurecr.io/paasrepo:${GIT_COMMIT}"
           name: angular
           ports: 
             - 
