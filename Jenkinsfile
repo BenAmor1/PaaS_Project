@@ -20,6 +20,7 @@ pipeline {
         }
     stage ('download and connect to AKS Cluster') {
         steps {
+            sh 'az login -u mohamed.benamor.1@esprit.tn -p Beff@04834989'
             echo 'downloanding aks CLi '
             echo ' connecting to AKS cluster'
             sh ' az aks get-credentials --resource-group prod-rg --name terraform-aks'
