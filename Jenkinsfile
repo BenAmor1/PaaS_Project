@@ -11,13 +11,6 @@ pipeline {
                 }
             }
         }
-        stage ('Image Build') {
-            steps {
-                echo 'Building Image ...'
-                sh 'docker build -t images/restaurant .'
-                echo 'Build Complete'
-            }
-        }
     stage ('download and connect to AKS Cluster') {
         steps {
             sh ' az aks get-credentials --resource-group prod-rg --name terraform-aks'
