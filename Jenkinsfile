@@ -21,16 +21,14 @@ pipeline {
     stage ('download and connect to AKS Cluster') {
         steps {
             echo 'downloanding aks CLi '
-            sh 'sudo az aks install-cli -S'
-            echo ' downloading finish'
             echo ' connecting to AKS cluster'
-            sh 'sudo az aks get-credentials --resource-group prod-rg --name terraform-aks -S'
+            sh ' az aks get-credentials --resource-group prod-rg --name terraform-aks'
             echo 'connected'
         }
     }
     stage ('deploy image to AKS'){
         steps{
-            sh 'sudo kubectl apply -f deployment.yaml -S'
+            sh 'kubectl apply -f deployment.yaml -S'
         }
     }
 	}
