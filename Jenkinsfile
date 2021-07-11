@@ -27,11 +27,11 @@ pipeline {
         }
 		stage ('push image to ACR') {
             steps {
-			          echo 'connection to ACR'
-				        sh ' sudo -S az acr login --name paasrepo'
+	        echo 'connection to ACR'
+	        sh ' sudo -S az acr login --name paasrepo'
                 echo 'push image to ACR'
                 sh 'sudo -S docker push paasrepo.azurecr.io/paasrepo:release1.0'
-				        echo 'images pushed'
+	        echo 'images pushed'
             }
         }
 		stage ('delete all local image'){
@@ -43,7 +43,7 @@ pipeline {
         }
         stage ('download and connect to AKS Cluster') {
             steps {
-			        	echo 'connection to AKS'
+		echo 'connection to AKS'
                 sh 'sudo -S az login -u mohamed.benamor.1@esprit.tn -p Beff@04834989'
                 sh ' sudo -S az aks install-cli'
                 sh 'sudo -S az aks get-credentials --resource-group prod-rg --name terraform-aks'
