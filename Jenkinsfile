@@ -3,12 +3,9 @@ pipeline {
     stages {
         stage ('preparation') {
             steps {
-                checkout scm
-                    sh "git rev-parse HEAD > .git/commit-id"
-                script {
-                    commit_id = readFile('.git/commit-id').trim()
-                    echo "${commit_id}"
-                }
+                checkout([$class: 'GitSCM', branches: [[name: '**/tags/*']], 
+                          extensions: [], userRemoteConfigs: [[credentialsId: 'github_credentiel', url: 'https://github.com/BenAmor1/PaaS_Project.git', 
+                                                               refspec: '+refs/tags/*:refs/remotes/origin/tags/*']]])
             }
         }    
 		stage ('Image Build') {
