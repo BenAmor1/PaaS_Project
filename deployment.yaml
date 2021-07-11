@@ -5,6 +5,8 @@ metadata:
   name: angular-deployment
 spec: 
   replicas: 2
+  strategy:
+    type: Recreate
   selector: 
     matchLabels: 
       app: angular
