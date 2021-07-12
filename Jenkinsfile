@@ -2,12 +2,20 @@ pipeline {
     agent any
     stages {
         stage ('preparation') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '**/tags/*']], 
-                          extensions: [], userRemoteConfigs: [[credentialsId: 'github_credentiel', url: 'https://github.com/BenAmor1/PaaS_Project.git', 
-                                                               refspec: '+refs/tags/*:refs/remotes/origin/tags/*']]])
+            agent {
+                node{
+                   label 'master'
+                }
             }
-        }    
+            steps {
+                checkout scm
+                sh "git rev-parse HEAD > .git/commit-id"
+                script {
+                    commit_id = readFile('.git/commit-id').trim()
+                    echo "${commit_id}"
+                }
+            }
+        }
 		stage ('Image Build') {
             steps {
                 echo 'Building Image ...'
