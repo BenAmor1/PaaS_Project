@@ -1,4 +1,4 @@
-#monitoring test
+#Pipeline test
 # stage 1
 # create container form NodeJS
 From node:latest as node
